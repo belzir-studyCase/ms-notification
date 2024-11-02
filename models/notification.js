@@ -3,8 +3,7 @@ import mongoose from 'mongoose';
 const notificationSchema = new mongoose.Schema({
     owner: {
         type: String,
-        required: true,
-        unique: true,
+        required: true
     },
     text: {
         type: String,
@@ -17,6 +16,6 @@ const notificationSchema = new mongoose.Schema({
     timestamps: true,  // Adds createdAt and updatedAt timestamps
 });
 
-const Notification = mongoose.model('notifications', notificationSchema);
+const Notification = mongoose.model('notification', notificationSchema);
 
 export default Notification;

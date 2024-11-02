@@ -5,9 +5,7 @@ import connectToMongoDB from './database/connection.js';
 connectToMongoDB();
 app.use(express.json());
 // Set default route for '/'
-app.get('/', (req, res) => {
-  res.send('Welcome to the MS Notification URL!');
-});
+
 app.use("/", notificationRouter);
 
 
