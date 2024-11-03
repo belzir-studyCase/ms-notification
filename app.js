@@ -2,8 +2,11 @@ import express from "express";
 import notificationRouter from './routes/notification.router.js';
 const app = express();
 import connectToMongoDB from './database/connection.js';
+import { swaggerUi, swaggerDocs } from './docsconfig/swaggerConfig.js';
+
 connectToMongoDB();
-app.use(express.json());
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+app.use(express.json());  
 // Set default route for '/'
 
 app.use("/", notificationRouter);
