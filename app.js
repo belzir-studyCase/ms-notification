@@ -7,7 +7,6 @@ import { swaggerUi, swaggerDocs } from './docsconfig/swaggerConfig.js';
 connectToMongoDB();
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 app.use(express.json());  
-// Set default route for '/'
 
 app.use("/", notificationRouter);
 
@@ -15,6 +14,4 @@ app.use("/", notificationRouter);
 app.listen(3004, () => {
   console.log(`Server is running at http://localhost:3004`);
 });
-
-// Export the app instance
 export default app;
