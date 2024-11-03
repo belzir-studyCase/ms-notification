@@ -2,10 +2,8 @@ import express from "express";
 import Notification from '../models/notification.js';
 import nodemailer from 'nodemailer';
 import axios from "axios";
-
 const router = express.Router();
 
-// Configure the mail transporter
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     host: 'smtp.gmail.com',
