@@ -21,7 +21,7 @@ router.post("/create/request/:id/:owner", async (req, res) => {
         const requestResponse = await axios.get(`http://localhost:3000/request/${id}`);
         const requestData = requestResponse.data;
 
-        const text = `${owner} Created New Request with the title "${requestData.title}" 
+        const text = `${requestData.email} Created New Request with the title "${requestData.title}" 
         Description : "${requestData.description}".`;
         const type = "Request Creation";
         const notification = new Notification({ owner, text, type });
@@ -42,7 +42,7 @@ router.post("/create/request/:id/:owner", async (req, res) => {
     }
 });
 
-router.post("/update/request/state/:id/:owner", async (req, res) => {
+router.post("/update/request/state/:id", async (req, res) => {
     try {
         const { id, owner } = req.params;
         const requestResponse = await axios.get(`http://localhost:3000/request/${id}`);
@@ -54,7 +54,7 @@ router.post("/update/request/state/:id/:owner", async (req, res) => {
         await notification.save();
         const mailOptions = {
             from: 'contact.fithealth23@gmail.com',
-            to: owner,
+            to: requestData.email,
             subject: "Request Update State",
             text: text,
         };
