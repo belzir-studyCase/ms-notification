@@ -12,7 +12,7 @@ const transporter = nodemailer.createTransport({
     secure: true,
     auth: {
         user: 'contact.fithealth23@gmail.com',
-        pass: 'ebrh bilu ygsn zrkw', // Consider using environment variables for sensitive information
+        pass: 'ebrh bilu ygsn zrkw',
     },
 });
 
@@ -43,7 +43,7 @@ const transporter = nodemailer.createTransport({
 router.post("/create/request/:id/:owner", async (req, res) => {
     const { id, owner } = req.params;
     try {
-        const requestResponse = await axios.get(`http://localhost:3000/request/${id}`);
+        const requestResponse = await axios.get(`https://gateway-9pxx.onrender.com/request/${id}`);
         const requestData = requestResponse.data;
 
         const text = `${requestData.email} Created New Request with the title "${requestData.title}" 
@@ -90,7 +90,7 @@ router.post("/create/request/:id/:owner", async (req, res) => {
 router.post("/update/request/state/:id", async (req, res) => {
     const { id } = req.params;
     try {
-        const requestResponse = await axios.get(`http://localhost:3000/request/${id}`);
+        const requestResponse = await axios.get(`https://gateway-9pxx.onrender.com/request/${id}`);
         const requestData = requestResponse.data;
 
         const text = `Your Request "${requestData.title}" has been Updated to "${requestData.stats}".`;
